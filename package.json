@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "build:storybook": "storybook build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "pnpm run build && gh-pages -d dist",
     "dev": "vite",
     "dev:storybook": "storybook dev -p 6006",
     "lint": "eslint .",
@@ -16,7 +16,7 @@
     "template:check:dependencies": "pnpm exec depcheck",
     "template:branches:show": "pnpm exec git-removed-branches",
     "template:branches:delete": "pnpm exec git-removed-branches --prune",
-    "test": "pnpm run test:vitest && pnpm run test:playwright",
+    "test": "pnpm run test:vitest",
     "test:playwright": "pnpm exec playwright test playwright",
     "test:vitest": "vitest --run",
     "test:vitest:coverage": "vitest --run --coverage",
