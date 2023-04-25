@@ -11,6 +11,8 @@
   top: 0;
   left: 0;
   background-image: url(pb.png);
+  background-repeat: no-repeat;
+  transition: 0.3s ease;
 
   &Wrapper {
     width: 200px;

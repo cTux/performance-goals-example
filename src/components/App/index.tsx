@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import cn from './styles.module.scss';
 
 export const App = () => {
+  const [containerWidth, setContainerWidth] = useState(300);
   const [width, setWidth] = useState(0);
   const ref = useRef<HTMLDivElement>();
 
@@ -14,6 +15,10 @@ export const App = () => {
 
   const handleSliderChange = useCallback((event, value) => {
     setWidth(value);
+  }, []);
+
+  const handleSliderContainerWidthChange = useCallback((event, value) => {
+    setContainerWidth(value);
   }, []);
 
   const imageWidth = 1200;
@@ -31,7 +36,19 @@ export const App = () => {
 
   return (
     <div id={'app'} className={cns(cn.app)}>
-      <div className={cns(cn.containerWrapper)}>
+      <div
+        className={cns(cn.containerWrapper)}
+        style={{ width: `${containerWidth}px` }}
+      >
+        <Slider
+          value={containerWidth}
+          aria-label="ContainerWidth"
+          valueLabelDisplay="auto"
+          max={600}
+          min={200}
+          onChange={handleSliderContainerWidthChange}
+        />
+
         <Slider
           value={width}
           aria-label="Percent"
